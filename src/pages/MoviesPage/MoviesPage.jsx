@@ -37,9 +37,9 @@ const MoviesPage = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for a movie"
+          placeholder="Пошук фільму"
         />
-        <button type="submit">Search</button>
+        <button type="submit">Пошук</button>
       </form>
       <MovieList movies={movies} />
     </div>

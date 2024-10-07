@@ -16,7 +16,7 @@ const HomePage = () => {
         );
         setMovies(response.data.results);
       } catch (error) {
-        console.error("Error fetching trending movies:", error);
+        console.error("Помилка завантаження популярних фільмів:", error);
       }
     };
     fetchTrendingMovies();
@@ -24,7 +24,7 @@ const HomePage = () => {
 
   return (
     <div className={styles.home}>
-      <h1>Trending Movies</h1>
+      <h1>Популярні фільми</h1>
       <MovieList movies={movies} />
     </div>
   );

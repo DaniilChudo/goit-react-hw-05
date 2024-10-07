@@ -1,11 +1,21 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
     <nav className={styles.nav}>
-      <Link to="/">Home</Link>
-      <Link to="/movies">Movies</Link>
+      <NavLink
+        to="/"
+        className={({ isActive }) => (isActive ? styles.active : undefined)}
+      >
+        Головна
+      </NavLink>
+      <NavLink
+        to="/movies"
+        className={({ isActive }) => (isActive ? styles.active : undefined)}
+      >
+        Фільми
+      </NavLink>
     </nav>
   );
 };

@@ -15,7 +15,7 @@ const MovieCast = () => {
     const fetchMovieCast = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=uk-UA`,
           {
             headers: {
               Authorization: `Bearer ${API_KEY}`,
@@ -25,7 +25,7 @@ const MovieCast = () => {
         );
         setCast(response.data.cast);
       } catch (error) {
-        setError("Error fetching movie cast");
+        setError("Помилка завантаження касту фільму");
         console.error(error);
       }
     };
@@ -37,7 +37,7 @@ const MovieCast = () => {
 
   return (
     <div className={styles.castContainer}>
-      <h2>Cast</h2>
+      <h2>Каст</h2>
       <ul className={styles.castList}>
         {cast.map((actor) => (
           <li key={actor.id} className={styles.castItem}>
@@ -47,7 +47,7 @@ const MovieCast = () => {
               className={styles.actorImage}
             />
             <p>{actor.name}</p>
-            <p className={styles.characterName}>as {actor.character}</p>
+            <p className={styles.characterName}>як {actor.character}</p>
           </li>
         ))}
       </ul>

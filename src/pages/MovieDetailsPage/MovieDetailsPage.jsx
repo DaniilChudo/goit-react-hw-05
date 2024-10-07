@@ -1,5 +1,11 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate, Outlet, Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import {
+  useParams,
+  useNavigate,
+  Outlet,
+  NavLink,
+  useLocation,
+} from "react-router-dom";
 import axios from "axios";
 import styles from "./MovieDetailsPage.module.css";
 
@@ -8,6 +14,8 @@ const API_KEY = "5a6b5599d4c44f6f3939766ca5724cc3";
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const backLink = useRef(location.state?.from ?? "/movies");
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
 
@@ -25,13 +33,16 @@ const MovieDetailsPage = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  if (error) return <p>Error loading movie details.</p>;
+  if (error) return <p>Помилка завантаження деталей фільму.</p>;
 
   return (
     movie && (
       <div>
-        <button className={styles.backButton} onClick={() => navigate(-1)}>
-          Go Back
+        <button
+          className={styles.backButton}
+          onClick={() => navigate(backLink.current)}
+        >
+          Назад
         </button>
         <h1>{movie.title}</h1>
         <img
@@ -40,13 +51,11 @@ const MovieDetailsPage = () => {
         />
         <p>{movie.overview}</p>
 
-        {/* Додано навігацію для перегляду касту та рецензій */}
         <nav>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
+          <NavLink to="cast">Каст</NavLink>
+          <NavLink to="reviews">Рецензії</NavLink>
         </nav>
 
-        {/* Вкладений маршрут для касту та рецензій */}
         <Outlet />
       </div>
     )
