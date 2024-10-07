@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Outlet } from "react-router-dom";
 import axios from "axios";
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
+import styles from "./MovieDetailsPage.module.css";
 
 const API_KEY = "5a6b5599d4c44f6f3939766ca5724cc3";
 
@@ -31,15 +30,16 @@ const MovieDetailsPage = () => {
   return (
     movie && (
       <div>
-        <button onClick={() => navigate(-1)}>Go Back</button>
+        <button className={styles.backButton} onClick={() => navigate(-1)}>
+          Go Back
+        </button>
         <h1>{movie.title}</h1>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
         />
         <p>{movie.overview}</p>
-        <MovieCast movieId={movieId} />
-        <MovieReviews movieId={movieId} />
+        <Outlet />
       </div>
     )
   );
