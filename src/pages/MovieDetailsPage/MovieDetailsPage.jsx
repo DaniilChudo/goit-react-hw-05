@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Outlet } from "react-router-dom";
+import { useParams, useNavigate, Outlet, Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./MovieDetailsPage.module.css";
 
@@ -39,6 +39,14 @@ const MovieDetailsPage = () => {
           alt={movie.title}
         />
         <p>{movie.overview}</p>
+
+        {/* Додано навігацію для перегляду касту та рецензій */}
+        <nav>
+          <Link to="cast">Cast</Link>
+          <Link to="reviews">Reviews</Link>
+        </nav>
+
+        {/* Вкладений маршрут для касту та рецензій */}
         <Outlet />
       </div>
     )

@@ -1,0 +1,34 @@
+.castContainer {
+  padding: 20px;
+}
+
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.castItem {
+  margin: 10px;
+  text-align: center;
+  max-width: 120px;
+  .actorImage {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    transition: transform 0.3s;
+  }
+
+  .actorImage:hover {
+    transform: scale(1.05);
+  }
+
+  .characterName {
+    color: gray;
+  }
+}
