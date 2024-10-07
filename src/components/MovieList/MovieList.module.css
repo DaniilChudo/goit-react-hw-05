@@ -1,0 +1,18 @@
+.list {
+  list-style-type: none; /* Прибираємо маркування */
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list li {
+  margin: 10px;
+  text-align: center;
+}
+
+.list img {
+  border-radius: 5px;
+  width: 150px; /* Можна регулювати розмір */
+  height: auto;
+}
